@@ -3,9 +3,9 @@
 class Brick
 {
 private:
-    /* data */
+    float x;
+    float y;
 public:
-    Brick(/* args */);
-    ~Brick();
+    Brick(float x, float y); // constructor
 };
 #endif /*BRICK_HPP*/ 
