@@ -4,10 +4,17 @@
 class Button
 {
 private:
-    /* data */
+    sf::Color bgNormal;
+    sf::Color bgHover;
+    sf::Color bgClicked;
+
+    sf::Color textNormal;
+    sf::Color textHover;
+    sf::Color textClicked;
+
 public:
-    Button(/* args */);
-    ~Button();
+    Button();
+
 };
 
 

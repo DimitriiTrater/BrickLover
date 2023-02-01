@@ -1,4 +1,5 @@
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include "button/button.hpp"
 
 int main(int argc, char* argv[])
 {
