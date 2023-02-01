@@ -7,8 +7,10 @@ private:
     float x;
     float y;
     float restriction[2];
+    
 public:
     Player(float x, float y);
+
     void setX(float x);
     void setY(float y);
     void setRestriction(float restriction, int indexRestriction);
