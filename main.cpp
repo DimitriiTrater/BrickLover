@@ -1,20 +1,20 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "font/sansation.hpp"
 #include "button/button.hpp"
-#include <iostream>
+#include "menu/menu.hpp"
+
 
 
 int main(int argc, char* argv[])
 {
-    const double width = 800;
-    const double height = 600;
+    const double WIDTH = 800;
+    const double HEIGHT = 600;
 
     sf::Font font;
     font.loadFromMemory(&sansation_ttf, sansation_ttf_len);
 
-    sf::RenderWindow window(sf::VideoMode(width, height), "BrickLover");
-    
-    
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "BrickLover");
     
     Button startButton("Start", {200, 50}, 20, sf::Color::White, sf::Color::Black);
     startButton.setFont(font);
@@ -28,6 +28,8 @@ int main(int argc, char* argv[])
     quitButton.setFont(font);
     quitButton.setPosition({300, 400});
 
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -38,33 +40,45 @@ int main(int argc, char* argv[])
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            // for quit
+            
             if (event.type == sf::Event::MouseButtonReleased)
+            {
+                // for start game
+                if (startButton.isMouseCover(window))
+                    if (event.mouseButton.button == sf::Mouse::Left)
+                        startButton.setBGColor(Menu::bgClicked);
+
+                // for open levels
+                if (levelsButton.isMouseCover(window))
+                    if (event.mouseButton.button == sf::Mouse::Left)
+                        levelsButton.setBGColor(Menu::bgClicked);
+
+                // for quit
                 if (quitButton.isMouseCover(window))
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        quitButton.setBGColor(sf::Color(96, 96, 96));
+                        quitButton.setBGColor(Menu::bgClicked);
                         window.close();    
                     }
-
+            }
 
             // for cover
             if (event.type == sf::Event::MouseMoved)
             {
                 // start button
                 if (startButton.isMouseCover(window))
-                    startButton.setBGColor(sf::Color(160, 160, 160));
+                    startButton.setBGColor(Menu::bgCover);
                 else startButton.setBGColor(sf::Color::White);
 
                 // levels button
                 if (levelsButton.isMouseCover(window))
-                    levelsButton.setBGColor(sf::Color(160, 160, 160));
+                    levelsButton.setBGColor(Menu::bgCover);
                 else levelsButton.setBGColor(sf::Color::White);
 
 
                 // quit button
                 if (quitButton.isMouseCover(window))
-                    quitButton.setBGColor(sf::Color(160, 160, 160));
+                    quitButton.setBGColor(Menu::bgCover);
                 else quitButton.setBGColor(sf::Color::White);
             }   
         }    
