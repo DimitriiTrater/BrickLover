@@ -7,19 +7,13 @@ private:
 
     sf::RectangleShape button;
 
-    sf::Color bgNormal;
-    sf::Color bgHover;
-    sf::Color bgClicked;
+    sf::Color bgColor;
 
-    sf::Color textNormal;
-    sf::Color textHover;
-    sf::Color textClicked;
+    sf::Color textColor;
 
     sf::Text text;
 
 public:
-    Button();
-
     Button(std::string text, sf::Vector2f buttonSize, int characterSize, sf::Color bgNormal, sf::Color textNormal);
 
     void setFont(const sf::Font& font);
@@ -33,6 +27,7 @@ public:
     void drawButton(sf::RenderWindow& window);
 
     bool isMouseCover(sf::RenderWindow& window);
+
 };
 
 

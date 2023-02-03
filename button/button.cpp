@@ -3,19 +3,16 @@
 #include "button.hpp"
 
 
-Button::Button()
-{}
-
-Button::Button(std::string text, sf::Vector2f buttonSize, int characterSize, sf::Color bgNormal, sf::Color textNormal)
+Button::Button(std::string text, sf::Vector2f buttonSize, int characterSize, sf::Color bgColor, sf::Color textColor)
 {
     this->text.setString(text);
-    this->textNormal = textNormal;
-    this->text.setColor(this->textNormal);
+    this->textColor = textColor;
+    this->text.setFillColor(this->textColor);
     this->text.setCharacterSize(characterSize);
 
     this->button.setSize(buttonSize);
-    this->bgNormal = bgNormal;
-    this->button.setFillColor(this->bgNormal);
+    this->bgColor = bgColor;
+    this->button.setFillColor(this->bgColor);
 
 }
 
@@ -32,7 +29,7 @@ void Button::setBGColor(const sf::Color& color)
 
 void Button::setTextColor(const sf::Color& color)
 {
-    this->text.setColor(color);
+    this->text.setFillColor(color);
 }
 
 void Button::setPosition(const sf::Vector2f& position)
