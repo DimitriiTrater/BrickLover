@@ -24,9 +24,9 @@ int main(int argc, char* argv[])
     levelsButton.setFont(font);
     levelsButton.setPosition({300, 300});
 
-    Button escapeButton("Quit", {200, 50}, 20, sf::Color::White, sf::Color::Black);
-    escapeButton.setFont(font);
-    escapeButton.setPosition({300, 400});
+    Button quitButton("Quit", {200, 50}, 20, sf::Color::White, sf::Color::Black);
+    quitButton.setFont(font);
+    quitButton.setPosition({300, 400});
 
     while (window.isOpen())
     {
@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
 
             // for quit
             if (event.type == sf::Event::MouseButtonReleased)
-                if (escapeButton.isMouseCover(window))
+                if (quitButton.isMouseCover(window))
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        escapeButton.setBGColor(sf::Color(96, 96, 96));
+                        quitButton.setBGColor(sf::Color(96, 96, 96));
                         window.close();    
                     }
 
@@ -63,16 +63,16 @@ int main(int argc, char* argv[])
 
 
                 // quit button
-                if (escapeButton.isMouseCover(window))
-                    escapeButton.setBGColor(sf::Color(160, 160, 160));
-                else escapeButton.setBGColor(sf::Color::White);
+                if (quitButton.isMouseCover(window))
+                    quitButton.setBGColor(sf::Color(160, 160, 160));
+                else quitButton.setBGColor(sf::Color::White);
             }   
         }    
         window.clear();
 
         startButton.drawButton(window);
         levelsButton.drawButton(window);
-        escapeButton.drawButton(window);
+        quitButton.drawButton(window);
         
         window.display();
     }
