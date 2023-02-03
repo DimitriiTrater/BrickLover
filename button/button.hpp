@@ -31,6 +31,8 @@ public:
     void setPosition(const sf::Vector2f& position);
 
     void drawButton(sf::RenderWindow& window);
+
+    bool isMouseCover(sf::RenderWindow& window);
 };
 
 
