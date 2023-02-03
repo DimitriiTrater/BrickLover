@@ -4,6 +4,9 @@
 class Button
 {
 private:
+
+    sf::RectangleShape button;
+
     sf::Color bgNormal;
     sf::Color bgHover;
     sf::Color bgClicked;
@@ -12,8 +15,13 @@ private:
     sf::Color textHover;
     sf::Color textClicked;
 
+    sf::Text text;
+
 public:
     Button();
+
+    Button(std::string text, sf::Vector2f size, sf::Color bgNormal, sf::Color textNormal);
+
 
 };
 
