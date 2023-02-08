@@ -3,6 +3,10 @@
 #include "button.hpp"
 
 
+Button::Button()
+{}
+
+
 Button::Button(std::string text, sf::Vector2f buttonSize, int characterSize, sf::Color bgColor, sf::Color textColor)
 {
     this->text.setString(text);
@@ -48,7 +52,7 @@ void Button::drawButton(sf::RenderWindow& window)
 
 }
 
-bool Button::isMouseCover(sf::RenderWindow& window)
+bool Button::isMouseCover(const sf::RenderWindow& window) const
 {
     float mouseX = sf::Mouse::getPosition(window).x;
     float mouseY = sf::Mouse::getPosition(window).y;

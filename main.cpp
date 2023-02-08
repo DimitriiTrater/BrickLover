@@ -6,27 +6,30 @@
 
 
 
+
+
 int main(int argc, char* argv[])
 {
-    const double WIDTH = 800;
+    const double WIDTH  = 800;
     const double HEIGHT = 600;
 
     sf::Font font;
     font.loadFromMemory(&sansation_ttf, sansation_ttf_len);
-
+    
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "BrickLover");
     
     Button startButton("Start", {200, 50}, 20, sf::Color::White, sf::Color::Black);
-    startButton.setFont(font);
-    startButton.setPosition({300, 200});
-
     Button levelsButton("Levels", {200, 50}, 20, sf::Color::White, sf::Color::Black);
-    levelsButton.setFont(font);
-    levelsButton.setPosition({300, 300});
-
     Button quitButton("Quit", {200, 50}, 20, sf::Color::White, sf::Color::Black);
-    quitButton.setFont(font);
-    quitButton.setPosition({300, 400});
+
+    Menu mainMenu(
+                Button("Start", {200, 50}, 20, sf::Color::White, sf::Color::Black),
+                Button("Levels", {200, 50}, 20, sf::Color::White, sf::Color::Black), 
+                Button("Quit", {200, 50}, 20, sf::Color::White, sf::Color::Black)
+                );
+
+    mainMenu.setButtonsMenuFont(font);
+    mainMenu.setButtonsMenuPosition();
 
 
 
@@ -47,14 +50,16 @@ int main(int argc, char* argv[])
                 if (startButton.isMouseCover(window))
                     if (event.mouseButton.button == sf::Mouse::Left)
                         startButton.setBGColor(Menu::bgClicked);
+                        // TODO: launch first level
 
                 // for open levels
                 if (levelsButton.isMouseCover(window))
                     if (event.mouseButton.button == sf::Mouse::Left)
                         levelsButton.setBGColor(Menu::bgClicked);
+                        // TODO: oepn level menu
 
                 // for quit
-                if (quitButton.isMouseCover(window))
+                if (mainMenu.isCoverButton(window, 2))
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
                         quitButton.setBGColor(Menu::bgClicked);
@@ -77,16 +82,14 @@ int main(int argc, char* argv[])
 
 
                 // quit button
-                if (quitButton.isMouseCover(window))
-                    quitButton.setBGColor(Menu::bgCover);
-                else quitButton.setBGColor(sf::Color::White);
+                if (mainMenu.isCoverButton(window, 2))
+                    mainMenu.setButtonsMenuCoverBackground(Menu::bgCover, 2);
+                else mainMenu.setButtonsMenuNormalBackground(sf::Color::White);
             }   
         }    
         window.clear();
 
-        startButton.drawButton(window);
-        levelsButton.drawButton(window);
-        quitButton.drawButton(window);
+        mainMenu.drawMenu(window);
         
         window.display();
     }

@@ -21,9 +21,10 @@ enable_testing()
 add_executable(
     ${PROJECT_NAME}    main.cpp
     
+    menu/menu.cpp     menu/menu.hpp
+
     button/button.cpp  button/button.hpp
     font/sansation.hpp
-    menu/menu.cpp     menu/menu.hpp
                        
 
 )
