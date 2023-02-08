@@ -4,6 +4,7 @@
 class Menu
 {
 private:
+    int countOfButtons = 3;
     Button buttons[3];
 
 public:
@@ -12,10 +13,10 @@ public:
     Menu(Button startButton, Button levelsButton, Button quitButton);
     void drawMenu(sf::RenderWindow& window);
 
-    void setAllButtonsMenuBackground(const sf::Color& color);
-    void setAnyButtonsMenuBackground(const sf::Color& color, int index);
-    void setButtonsMenuPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH);
-    void setButtonsMenuFont(const sf::Font& font);
+    void setAllButtonsBackground(const sf::Color& color);
+    void setAnyButtonsBackground(const sf::Color& color, int index);
+    void setButtonsPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH);
+    void setButtonsFont(const sf::Font& font);
 
     bool isCoverButton(sf::RenderWindow& window, int index) const;
     

@@ -6,7 +6,6 @@
 
 Menu::Menu()
 {
-    
 }
 
 
@@ -19,29 +18,29 @@ Menu::Menu(Button startButton, Button levelsButton, Button quitButton)
 }
 
 
-void Menu::setButtonsMenuFont(const sf::Font& font)
+void Menu::setButtonsFont(const sf::Font& font)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < countOfButtons; i++)
         this->buttons[i].setFont(font);
 }
 
 
-void Menu::setAllButtonsMenuBackground(const sf::Color& color)
+void Menu::setAllButtonsBackground(const sf::Color& color)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < countOfButtons; i++)
         this->buttons[i].setBGColor(color);
 }
 
-void Menu::setAnyButtonsMenuBackground(const sf::Color& color, int index)
+void Menu::setAnyButtonsBackground(const sf::Color& color, int index)
 {this->buttons[index].setBGColor(color);}
 
 
-void Menu::setButtonsMenuPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH)
+void Menu::setButtonsPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH)
 {
     int buttonWidth  = WIDTH  / 2 - buttonsW / 2;
     int buttonHeight = HEIGHT / 4 - buttonsH;
     
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < countOfButtons; i++)
     {
         buttons[i].setPosition({(float)buttonWidth, (float)buttonHeight});
         buttonHeight += 300;
@@ -51,7 +50,7 @@ void Menu::setButtonsMenuPosition(const int WIDTH, const int HEIGHT, int buttons
 
 void Menu::drawMenu(sf::RenderWindow& window)
 {
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < countOfButtons; i++)
         this->buttons[i].drawButton(window);
 }
 
