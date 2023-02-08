@@ -36,7 +36,7 @@ void Menu::setButtonsMenuPosition()
     for (int i = 0; i < 3; i++)
     {
         buttons[i].setPosition({300, init});
-        i += plus;
+        init += plus;
     }
 }
 
