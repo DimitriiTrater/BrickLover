@@ -11,9 +11,9 @@ public:
     Menu(Button startButton, Button levelsButton, Button quitButton);
     void drawMenu(sf::RenderWindow& window);
 
-    void setButtonsMenuNormalBackground(const sf::Color& color);
-    void setButtonsMenuCoverBackground(const sf::Color& color, int index);
-    void setButtonsMenuPosition();
+    void setAllButtonsMenuBackground(const sf::Color& color);
+    void setAnyButtonsMenuBackground(const sf::Color& color, int index);
+    void setButtonsMenuPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH);
     void setButtonsMenuFont(const sf::Font& font);
 
     bool isCoverButton(sf::RenderWindow& window, int index) const;

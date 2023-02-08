@@ -36,7 +36,7 @@ void Button::setTextColor(const sf::Color& color)
     this->text.setFillColor(color);
 }
 
-void Button::setPosition(const sf::Vector2f& position)
+void Button::setPosition(const sf::Vector2f& position) // X, Y
 {
     this->button.setPosition(position);
 

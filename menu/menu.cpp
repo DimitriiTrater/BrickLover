@@ -19,24 +19,25 @@ void Menu::setButtonsMenuFont(const sf::Font& font)
 }
 
 
-void Menu::setButtonsMenuNormalBackground(const sf::Color& color)
+void Menu::setAllButtonsMenuBackground(const sf::Color& color)
 {
     for (int i = 0; i < 3; i++)
         this->buttons[i].setBGColor(color);
 }
 
-void Menu::setButtonsMenuCoverBackground(const sf::Color& color, int index)
+void Menu::setAnyButtonsMenuBackground(const sf::Color& color, int index)
 {this->buttons[index].setBGColor(color);}
 
 
-void Menu::setButtonsMenuPosition()
+void Menu::setButtonsMenuPosition(const int WIDTH, const int HEIGHT, int buttonsW, int buttonsH)
 {
-    float init = 200;
-    float plus = 100;
+    int buttonWidth  = WIDTH  / 2 - buttonsW / 2;
+    int buttonHeight = HEIGHT / 4 - buttonsH;
+    
     for (int i = 0; i < 3; i++)
     {
-        buttons[i].setPosition({300, init});
-        init += plus;
+        buttons[i].setPosition({(float)buttonWidth, (float)buttonHeight});
+        buttonHeight += 300;
     }
 }
 
