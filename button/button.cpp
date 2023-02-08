@@ -3,6 +3,9 @@
 #include "button.hpp"
 
 
+Button::Button()
+{}
+
 
 Button::Button(std::string text, sf::Vector2f buttonSize, int characterSize, sf::Color bgColor, sf::Color textColor)
 {
