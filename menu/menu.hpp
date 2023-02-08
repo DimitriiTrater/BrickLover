@@ -8,6 +8,7 @@ private:
 
 public:
 
+    Menu();
     Menu(Button startButton, Button levelsButton, Button quitButton);
     void drawMenu(sf::RenderWindow& window);
 

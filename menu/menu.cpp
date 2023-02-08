@@ -3,6 +3,13 @@
 #include "menu.hpp"
 
 
+
+Menu::Menu()
+{
+    
+}
+
+
 Menu::Menu(Button startButton, Button levelsButton, Button quitButton)
 {
     this->buttons[0] = startButton;

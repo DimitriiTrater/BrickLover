@@ -29,6 +29,9 @@ int main(int argc, char* argv[])
     mainMenu.setButtonsMenuFont(font);
     mainMenu.setButtonsMenuPosition(WIDTH, HEIGHT, buttonsW, buttonsH);
 
+
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -39,21 +42,21 @@ int main(int argc, char* argv[])
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            
+            // mouse click
             if (event.type == sf::Event::MouseButtonReleased)
             {
-                // for start game
+                // start game
                 if (mainMenu.isCoverButton(window, 0))
                     if (event.mouseButton.button == sf::Mouse::Left)
                         mainMenu.setAnyButtonsMenuBackground(Menu::bgClicked, 0); // TODO: launch first level
 
-                // for open levels
+                // open levels
                 if (mainMenu.isCoverButton(window, 1))
                     if (event.mouseButton.button == sf::Mouse::Left)
                         mainMenu.setAnyButtonsMenuBackground(Menu::bgClicked, 1); // TODO: oepn level menu
                         
 
-                // for quit
+                // quit
                 if (mainMenu.isCoverButton(window, 2))
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
@@ -81,6 +84,7 @@ int main(int argc, char* argv[])
                     mainMenu.setAnyButtonsMenuBackground(Menu::bgCover, 2);
                 else mainMenu.setAnyButtonsMenuBackground(Menu::bgStandard, 2);
             }   
+        
         }    
         window.clear();
 
