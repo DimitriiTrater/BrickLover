@@ -31,12 +31,12 @@ void Menu::setButtonsMenuCoverBackground(const sf::Color& color, int index)
 
 void Menu::setButtonsMenuPosition()
 {
-    float i = 200;
-    int plis = 100;
-    for (int j = 0; j < 3; j++)
+    float init = 200;
+    float plus = 100;
+    for (int i = 0; i < 3; i++)
     {
-        buttons[j].setPosition({300, i});
-        i += plis;
+        buttons[i].setPosition({300, init});
+        i += plus;
     }
 }
 

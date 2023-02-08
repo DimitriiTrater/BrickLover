@@ -5,9 +5,6 @@
 #include "menu/menu.hpp"
 
 
-
-
-
 int main(int argc, char* argv[])
 {
     const double WIDTH  = 800;
@@ -30,8 +27,6 @@ int main(int argc, char* argv[])
 
     mainMenu.setButtonsMenuFont(font);
     mainMenu.setButtonsMenuPosition();
-
-
 
     while (window.isOpen())
     {
