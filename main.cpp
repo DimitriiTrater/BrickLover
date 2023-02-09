@@ -37,10 +37,10 @@ int main(int argc, char* argv[])
     float levelH = 70;
 
     LevelMenu levelMenu(
-        Button("1", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("2", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("3", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("4", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
+        Button("1",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
+        Button("2",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
+        Button("3",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
+        Button("4",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
         Button("<-", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black)
     );
 
@@ -129,8 +129,11 @@ int main(int argc, char* argv[])
 
         if (!levelMenuIsOpen)
             mainMenu.drawMenu(window);
+
         if (levelMenuIsOpen)
             levelMenu.drawMenu(window);
+        
+        
         
         window.display();
     }
