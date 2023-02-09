@@ -27,6 +27,7 @@ add_executable(
     level_menu/level_menu.cpp   level_menu/level_menu.hpp                    
 
     player/player.cpp           player/player.hpp
+    player_controller/player_controller.cpp           player_controller/player_controller.hpp
 
 
     font/sansation.hpp

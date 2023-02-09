@@ -10,6 +10,7 @@ private:
     float restriction;
     
 public:
+    Player();
     Player(float x, float y, sf::Vector2f size, sf::Color color);
 
 
@@ -25,6 +26,7 @@ public:
     float getY();
     float getRestriction(int indexRestriction);
 
+    void move(float x);
 
     void drawPlayer(sf::RenderWindow& window);
 

@@ -2,6 +2,10 @@
 #include "Player.hpp"
 
 
+Player::Player()
+{}
+
+
 Player::Player(float x, float y, sf::Vector2f size, sf::Color color)
 {
     this->x = x;
@@ -34,6 +38,12 @@ float Player::getY() // get y position
 
 float Player::getRestriction(int indexRestriction) // get restriction
 {return this->restriction;}
+
+void Player::move(float x) // move;
+{
+    playerShape.move({x, 0});
+}
+
 
 
 void Player::drawPlayer(sf::RenderWindow& window)
