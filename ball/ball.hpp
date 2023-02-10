@@ -5,14 +5,16 @@ class Ball
 {
 
 private:
+
+    sf::CircleShape ballShape;
     float x;  // x spawn point ball
     float y;  // y spawn point ball
-    float dx; // x speed
-    float dy; // y speed
+    float dx = -1; // x speed
+    float dy = -1; // y speed
     float r;  // radius ball
 
 public:
-    Ball(float x, float y, float r);
+    Ball(float x, float y, float r, sf::Color color);
     
     void setX  (float x);
     void setDX (float dx);
@@ -28,6 +30,8 @@ public:
     float getDY();
     
     float getR();
+
+    void drawBall(sf::RenderWindow& window);
 
 
 };

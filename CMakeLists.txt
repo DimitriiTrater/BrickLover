@@ -29,6 +29,7 @@ add_executable(
     player/player.cpp           player/player.hpp
     player_controller/player_controller.cpp           player_controller/player_controller.hpp
 
+    ball/ball.cpp ball/ball.hpp
 
     font/sansation.hpp
                        

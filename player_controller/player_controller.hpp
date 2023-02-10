@@ -4,7 +4,7 @@ private:
     sf::Keyboard::Key left;
     sf::Keyboard::Key right;
     Player* player;
-    float moveSpeed = 10.f; 
+    float moveSpeed = 5.f;
 
     void moveLeft ();
     void moveRight();

@@ -7,22 +7,27 @@
 // private
 void PlayerController::moveLeft()
 {
-    if (sf::Keyboard::isKeyPressed(left))
-    {
-        std::cout << "Move Left" << std::endl;
-
-        player->move(-moveSpeed);
-    }
+    if (player->getShapeX() > 0)
+        if (sf::Keyboard::isKeyPressed(left))
+        {
+            std::cout << "Move Left" << std::endl;
+            player->move(-moveSpeed);
+        }
 }
 
 
 void PlayerController::moveRight()
 {
-    if (sf::Keyboard::isKeyPressed(right)){
-    std::cout << "Move Right" << std::endl;
- 
-        player->move(moveSpeed);
-}}
+
+    if (player->getShapeX() < (player->getRestriction() - player->getSizeX()))
+        if (sf::Keyboard::isKeyPressed(right))
+        {
+
+            std::cout << "Move Right" << std::endl;
+    
+            player->move(moveSpeed);
+        }
+}
 
 
 

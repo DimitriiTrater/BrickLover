@@ -11,6 +11,7 @@ Player::Player(float x, float y, sf::Vector2f size, sf::Color color)
     this->x = x;
     this->y = y;
 
+    this->size = size;
     this->playerShape.setSize(size);
     this->playerShape.setFillColor(color);
     this->playerShape.setPosition({x, y});
@@ -36,7 +37,7 @@ float Player::getX() // get x position
 float Player::getY() // get y position
 {return this->y;}
 
-float Player::getRestriction(int indexRestriction) // get restriction
+float Player::getRestriction() // get restriction
 {return this->restriction;}
 
 void Player::move(float x) // move;
@@ -44,6 +45,15 @@ void Player::move(float x) // move;
     playerShape.move({x, 0});
 }
 
+float Player::getShapeX() // get shape coordinates
+{
+    return playerShape.getPosition().x;
+}
+
+float Player::getSizeX() // get size
+{
+    return this->size.x;
+}
 
 
 void Player::drawPlayer(sf::RenderWindow& window)

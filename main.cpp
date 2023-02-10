@@ -6,7 +6,7 @@
 #include "level_menu/level_menu.hpp"
 #include "player/player.hpp"
 #include "player_controller/player_controller.hpp"
-
+#include "ball/ball.hpp"
 
 
 int main(int argc, char* argv[])
@@ -71,10 +71,12 @@ int main(int argc, char* argv[])
     levelMenu.setButtonsLevelPosition(WIDTH, HEIGHT, buttonsW, buttonsH);
 
     // Create player and controller
-    Player player(800, 950, {500, 25}, sf::Color::White);
+    Player player(800, 950, {300, 25}, sf::Color::White);
     player.setRestriction(WIDTH);
+
     PlayerController controller(player, sf::Keyboard::Left, sf::Keyboard::Right);
 
+    Ball ball(925, 850, 20, sf::Color::White);
 
     while (window.isOpen())
     {
@@ -177,6 +179,7 @@ int main(int argc, char* argv[])
             break;
         case FirstLevelState:
             controller.move();
+            ball.drawBall(window);
             player.drawPlayer(window);
             exitFromLevelButton.drawButton(window);
             break;

@@ -8,6 +8,7 @@ private:
     float x;
     float y;
     float restriction;
+    sf::Vector2f size;
     
 public:
     Player();
@@ -24,7 +25,10 @@ public:
 
     float getX();
     float getY();
-    float getRestriction(int indexRestriction);
+    float getRestriction();
+    float getShapeX();
+    float getSizeX(); // get size
+
 
     void move(float x);
 

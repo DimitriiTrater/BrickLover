@@ -1,6 +1,7 @@
+#include <SFML/Graphics.hpp>
 #include "ball.hpp"
 
-Ball::Ball(float x, float y, float r)
+Ball::Ball(float x, float y, float r, sf::Color color)
 {
     this->x = x;
     this->dx = -1;
@@ -8,7 +9,11 @@ Ball::Ball(float x, float y, float r)
     this->y = y;
     this->dy = -1;
     
-    this->r = 25;
+    this->r = r;
+    ballShape.setFillColor(color);
+    ballShape.setRadius(r);
+    ballShape.setPosition({x, y});
+
 }
 
 void Ball::setX(float x)
@@ -38,4 +43,10 @@ float Ball::getDY()
 
 float Ball::getR()
 {return this->r;}
+
+void Ball::drawBall(sf::RenderWindow& window)
+{
+    window.draw(ballShape);   
+}
+
 
