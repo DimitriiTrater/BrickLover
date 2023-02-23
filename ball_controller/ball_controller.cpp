@@ -27,11 +27,7 @@ void BallController::collisionWithBoard()
         dx = -dx;
 
     if (ball->getShapeY() + ball->getR() >= ball->getRestriction(1))
-    {    
-        dy = -dy;
-        ball->setPosition({950, 850});
         stateOfLive = false;
-    }
 }
 
 void BallController::setPlayer(Player& player)
