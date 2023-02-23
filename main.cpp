@@ -7,6 +7,7 @@
 #include "player/player.hpp"
 #include "player_controller/player_controller.hpp"
 #include "ball/ball.hpp"
+#include "ball_controller/ball_controller.hpp"
 
 
 int main(int argc, char* argv[])
@@ -77,6 +78,12 @@ int main(int argc, char* argv[])
     PlayerController controller(player, sf::Keyboard::Left, sf::Keyboard::Right);
 
     Ball ball(925, 850, 20, sf::Color::White);
+    ball.setRestriction(WIDTH, 0);
+    ball.setRestriction(HEIGHT, 1);
+
+
+    BallController ballController(ball, sf::Keyboard::Space);
+    ballController.setPlayer(player);
 
     while (window.isOpen())
     {
@@ -178,6 +185,7 @@ int main(int argc, char* argv[])
             levelMenu.drawMenu(window);
             break;
         case FirstLevelState:
+            ballController.move();
             controller.move();
             ball.drawBall(window);
             player.drawPlayer(window);

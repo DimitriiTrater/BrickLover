@@ -27,7 +27,10 @@ public:
     float getY();
     float getRestriction();
     float getShapeX();
-    float getSizeX(); // get size
+    float getShapeY(); // get shape y coordinates
+    float getSizeX(); // get size x
+    float getSizeY(); // get size y
+    
 
 
     void move(float x);

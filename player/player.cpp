@@ -45,14 +45,25 @@ void Player::move(float x) // move;
     playerShape.move({x, 0});
 }
 
-float Player::getShapeX() // get shape coordinates
+float Player::getShapeX() // get shape x coordinates
 {
     return playerShape.getPosition().x;
 }
 
+float Player::getShapeY() // get shape y coordinates
+{
+    return playerShape.getPosition().y;
+}
+
+
 float Player::getSizeX() // get size
 {
     return this->size.x;
+}
+
+float Player::getSizeY() // get size y
+{
+    return this->size.y;
 }
 
 
