@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string>
 #include "font/sansation.hpp"
 #include "button/button.hpp"
 #include "menu/menu.hpp"
@@ -64,6 +65,13 @@ int main(int argc, char* argv[])
     BallController ballController(ball, sf::Keyboard::Space);
     ballController.setPlayer(player);
 
+    // count of lives
+    sf::Text text;
+    text.setFont(font);
+    text.setCharacterSize(30);
+    text.setFillColor(sf::Color::White);
+    text.setPosition({300, 10});
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -120,8 +128,11 @@ int main(int argc, char* argv[])
                         if (event.mouseButton.button == sf::Mouse::Left)
                                 state = MainMenuState;
                 if (ballController.getLives() < 1)
+                {
                     state = MainMenuState;
-
+                    window.close();
+                }               
+                
                 break;
             default:
                 break;
@@ -135,6 +146,8 @@ int main(int argc, char* argv[])
             mainMenu.drawMenu(window);
             break;
         case InGameState:
+            text.setString("Lives: " + std::to_string(ballController.getLives()));
+            window.draw(text);
             ballController.move();
             controller.move();
             ball.drawBall(window);
