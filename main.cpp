@@ -3,7 +3,6 @@
 #include "font/sansation.hpp"
 #include "button/button.hpp"
 #include "menu/menu.hpp"
-#include "level_menu/level_menu.hpp"
 #include "player/player.hpp"
 #include "player_controller/player_controller.hpp"
 #include "ball/ball.hpp"
@@ -23,22 +22,10 @@ int main(int argc, char* argv[])
     exitFromLevelButton.setPosition({10, 10});
     exitFromLevelButton.setFont(font);
 
-    enum Levels 
-    {
-        TutorialLevel,
-        FirstLevel,
-        SecondLevel,
-        ThirdLevel,
-        FourthLevel,
-        FifthLevel,
-    };
-
-
     // States of the game
     enum State
     {
         MainMenuState,
-        LevelMenuState,
         InGameState,
     };
 
@@ -62,21 +49,6 @@ int main(int argc, char* argv[])
 
     mainMenu.setButtonsFont(font);
     mainMenu.setButtonsPosition(WIDTH, HEIGHT, buttonsW, buttonsH);
-
-    // buttons for levels menu
-    float levelW = 70;
-    float levelH = 70;
-
-    LevelMenu levelMenu(
-        Button("1",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("2",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("3",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("4",  {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("<-", {levelW, levelH}, charSize, sf::Color::White, sf::Color::Black)
-    );
-
-    levelMenu.setButtonsLevelFont(font);
-    levelMenu.setButtonsLevelPosition(WIDTH, HEIGHT, buttonsW, buttonsH);
 
     // Create player and controller
     Player player(800, 950, {300, 25}, sf::Color::White);
@@ -114,19 +86,11 @@ int main(int argc, char* argv[])
                             state = InGameState;
                         }
 
-                    // open levels
+                    // quit
                     if (mainMenu.isCoverButton(window, 1))
                         if (event.mouseButton.button == sf::Mouse::Left)
                         {
                             mainMenu.setAnyButtonsBackground(Menu::bgClicked, 1);
-                            state = LevelMenuState;
-                        }
-
-                    // quit
-                    if (mainMenu.isCoverButton(window, 2))
-                        if (event.mouseButton.button == sf::Mouse::Left)
-                        {
-                            mainMenu.setAnyButtonsBackground(Menu::bgClicked, 2);
                             window.close();    
                         }
                 }                
@@ -138,33 +102,12 @@ int main(int argc, char* argv[])
                         mainMenu.setAnyButtonsBackground(Menu::bgCover, 0);
                     else mainMenu.setAnyButtonsBackground(Menu::bgStandard, 0);
 
-                    // levels button
+                    // quit button
                     if (mainMenu.isCoverButton(window, 1))
                         mainMenu.setAnyButtonsBackground(Menu::bgCover, 1);
                     else mainMenu.setAnyButtonsBackground(Menu::bgStandard, 1);
-
-
-                    // quit button
-                    if (mainMenu.isCoverButton(window, 2))
-                        mainMenu.setAnyButtonsBackground(Menu::bgCover, 2);
-                    else mainMenu.setAnyButtonsBackground(Menu::bgStandard, 2);
                 }
                 
-                break;
-            case LevelMenuState:
-                if (event.type == sf::Event::MouseButtonReleased)
-                    if (levelMenu.isCoverButton(window, 4))
-                    if (event.mouseButton.button == sf::Mouse::Left)
-                        {
-                            levelMenu.setAnyButtonsBackground(Menu::bgClicked, 4);
-                            state = MainMenuState;
-                        }
-                
-                if (event.type = sf::Event::MouseMoved)
-                    for (int i = 0; i < 5; i++)
-                        if (levelMenu.isCoverButton(window, i))
-                            levelMenu.setAnyButtonsBackground(Menu::bgCover, i);
-                        else levelMenu.setAnyButtonsBackground(Menu::bgStandard, i);
                 break;
             case InGameState:
                 if (event.type == sf::Event::MouseMoved)
@@ -187,9 +130,6 @@ int main(int argc, char* argv[])
         {
         case MainMenuState:
             mainMenu.drawMenu(window);
-            break;
-        case LevelMenuState:
-            levelMenu.drawMenu(window);
             break;
         case InGameState:
             ballController.move();

@@ -23,8 +23,7 @@ add_executable(
 
     
     button/button.cpp           button/button.hpp
-    menu/menu.cpp               menu/menu.hpp
-    level_menu/level_menu.cpp   level_menu/level_menu.hpp                    
+    menu/menu.cpp               menu/menu.hpp      
 
     player/player.cpp           player/player.hpp
     player_controller/player_controller.cpp           player_controller/player_controller.hpp

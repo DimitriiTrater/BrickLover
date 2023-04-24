@@ -12,7 +12,7 @@ Menu::Menu()
 Menu::Menu(Button startButton, Button quitButton)
 {
     this->buttons[0] = startButton;
-    this->buttons[2] = quitButton;
+    this->buttons[1] = quitButton;
 }
 
 
