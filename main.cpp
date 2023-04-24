@@ -23,15 +23,23 @@ int main(int argc, char* argv[])
     exitFromLevelButton.setPosition({10, 10});
     exitFromLevelButton.setFont(font);
 
+    enum Levels 
+    {
+        TutorialLevel,
+        FirstLevel,
+        SecondLevel,
+        ThirdLevel,
+        FourthLevel,
+        FifthLevel,
+    };
+
 
     // States of the game
     enum State
     {
         MainMenuState,
         LevelMenuState,
-        FirstLevelState,
-        SecondLevelState,
-        ThirdLevelState,
+        InGameState,
     };
 
     State state = MainMenuState; // standard state
@@ -49,7 +57,6 @@ int main(int argc, char* argv[])
 
     Menu mainMenu(
         Button("Start",  {buttonsW, buttonsH}, charSize, sf::Color::White, sf::Color::Black),
-        Button("Levels", {buttonsW, buttonsH}, charSize, sf::Color::White, sf::Color::Black), 
         Button("Quit",   {buttonsW, buttonsH}, charSize, sf::Color::White, sf::Color::Black)
     );
 
@@ -99,12 +106,12 @@ int main(int argc, char* argv[])
             case MainMenuState:
                 if (event.type == sf::Event::MouseButtonReleased)
                 {
-                    // start game
+                    // start tutorial
                     if (mainMenu.isCoverButton(window, 0))
                         if (event.mouseButton.button == sf::Mouse::Left)
                         {
-                            mainMenu.setAnyButtonsBackground(Menu::bgClicked, 0); // TODO: launch first level
-                            state = FirstLevelState;
+                            mainMenu.setAnyButtonsBackground(Menu::bgClicked, 0); 
+                            state = InGameState;
                         }
 
                     // open levels
@@ -147,7 +154,7 @@ int main(int argc, char* argv[])
             case LevelMenuState:
                 if (event.type == sf::Event::MouseButtonReleased)
                     if (levelMenu.isCoverButton(window, 4))
-                        if (event.mouseButton.button == sf::Mouse::Left)
+                    if (event.mouseButton.button == sf::Mouse::Left)
                         {
                             levelMenu.setAnyButtonsBackground(Menu::bgClicked, 4);
                             state = MainMenuState;
@@ -159,7 +166,7 @@ int main(int argc, char* argv[])
                             levelMenu.setAnyButtonsBackground(Menu::bgCover, i);
                         else levelMenu.setAnyButtonsBackground(Menu::bgStandard, i);
                 break;
-            case FirstLevelState:
+            case InGameState:
                 if (event.type == sf::Event::MouseMoved)
                     if (exitFromLevelButton.isMouseCover(window))
                         exitFromLevelButton.setBGColor(Menu::bgCover);
@@ -184,7 +191,7 @@ int main(int argc, char* argv[])
         case LevelMenuState:
             levelMenu.drawMenu(window);
             break;
-        case FirstLevelState:
+        case InGameState:
             ballController.move();
             controller.move();
             ball.drawBall(window);

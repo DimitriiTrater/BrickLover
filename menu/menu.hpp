@@ -4,13 +4,13 @@
 class Menu
 {
 private:
-    int countOfButtons = 3;
-    Button buttons[3];
+    int countOfButtons = 2;
+    Button buttons[2];
 
 public:
 
     Menu();
-    Menu(Button startButton, Button levelsButton, Button quitButton);
+    Menu(Button startButton, Button quitButton);
     void drawMenu(sf::RenderWindow& window);
 
     void setAllButtonsBackground(const sf::Color& color);

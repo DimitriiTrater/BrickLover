@@ -9,12 +9,10 @@ Menu::Menu()
 }
 
 
-Menu::Menu(Button startButton, Button levelsButton, Button quitButton)
+Menu::Menu(Button startButton, Button quitButton)
 {
     this->buttons[0] = startButton;
-    this->buttons[1] = levelsButton;
     this->buttons[2] = quitButton;
-
 }
 
 
