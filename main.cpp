@@ -119,6 +119,9 @@ int main(int argc, char* argv[])
                     if (exitFromLevelButton.isMouseCover(window))
                         if (event.mouseButton.button == sf::Mouse::Left)
                                 state = MainMenuState;
+                if (ballController.getLives() < 1)
+                    state = MainMenuState;
+
                 break;
             default:
                 break;

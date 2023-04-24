@@ -27,7 +27,10 @@ void BallController::collisionWithBoard()
         dx = -dx;
 
     if (ball->getShapeY() + ball->getR() >= ball->getRestriction(1))
+    {
         stateOfLive = false;
+        lives--;
+    }
 }
 
 void BallController::setPlayer(Player& player)
@@ -64,3 +67,7 @@ void BallController::move()
         ball->setPosition({player->getShapeX() + player->getSizeX() / 2, player->getShapeY() - player->getSizeY() - 40});
     }
 }
+
+
+int BallController::getLives() const
+{return this->lives;}

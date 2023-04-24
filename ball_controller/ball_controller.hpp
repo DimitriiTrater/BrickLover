@@ -16,10 +16,13 @@ private:
     void collisionWithPlayer();
     void startLive();
 
+    int lives = 3;
+
 
 public:
     BallController(Ball& ball, sf::Keyboard::Key start);
 
+    int getLives() const;
     void setPlayer(Player& player);
     void move();
 };
